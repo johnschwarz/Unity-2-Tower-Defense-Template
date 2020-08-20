@@ -11,6 +11,7 @@ public class TowerManager : MonoBehaviour
     private SpriteRenderer spr;
     public GameObject currentTarget;
     public GameObject projectile;
+    
 
     private bool readyToFire = true;
 
@@ -22,6 +23,7 @@ public class TowerManager : MonoBehaviour
         spr.color = self.color;
         spr.sprite = self.sprite;
         currentHealth = self.health;
+        
         FindNextTarget();
     }
 
@@ -114,9 +116,13 @@ public class TowerManager : MonoBehaviour
 
     IEnumerator FireProjectile(Quaternion direction)
     {
-        GameObject shotProjectile = Instantiate(projectile, this.transform);
+        //GameObject shotProjectile = Instantiate(, this.transform);
+
+        
+
         readyToFire = false;
         yield return new WaitForSeconds(self.attackCooldown);
         readyToFire = true;
     }
+
 }
