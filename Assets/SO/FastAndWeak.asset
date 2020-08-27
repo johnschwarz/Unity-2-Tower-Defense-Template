@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3773ec5ef386044ce970d65cf5e718a3, type: 3}
   m_Name: FastAndWeak
   m_EditorClassIdentifier: 
-  damage: 7
+  damage: 60
   speed: 10
   size: 1
   color: {r: 0, g: 0, b: 0, a: 1}

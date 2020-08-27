@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3773ec5ef386044ce970d65cf5e718a3, type: 3}
   m_Name: SlowAndStrong
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 60
   speed: 3
   size: 1
   color: {r: 0.5471698, g: 0.48048317, b: 0.10582057, a: 1}

@@ -99,7 +99,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   currentHealth: 0
   currentTarget: {fileID: 0}
-  projectile: {fileID: 0}
+  projectile: {fileID: 3743138880067988692, guid: 808bd3dac3fed4a19939349de3184a71,
+    type: 3}
 --- !u!60 &177289955711521782
 PolygonCollider2D:
   m_ObjectHideFlags: 0

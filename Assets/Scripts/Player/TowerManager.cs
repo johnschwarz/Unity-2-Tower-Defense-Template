@@ -33,6 +33,7 @@ public class TowerManager : MonoBehaviour
         if (currentTarget != null)
         {
             AttackTarget();
+            //also set float here
         }
         else
         {
@@ -74,6 +75,7 @@ public class TowerManager : MonoBehaviour
         {
             if (currentTarget != null)
             {
+                //set range
                 anim.SetBool("hasTarget", true);
             }
             else
@@ -95,7 +97,7 @@ public class TowerManager : MonoBehaviour
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
         return rot;
     }
-
+    //make public 
     void AttackTarget()
     {
         Debug.DrawLine(this.transform.position, currentTarget.transform.position);
@@ -116,13 +118,37 @@ public class TowerManager : MonoBehaviour
 
     IEnumerator FireProjectile(Quaternion direction)
     {
-        //GameObject shotProjectile = Instantiate(, this.transform);
-
         
+        GameObject shotProjectile = Instantiate(CreateProjectile(), this.transform);
 
+        shotProjectile.GetComponent<ProjectileManager>().self = self.projectile;
+        shotProjectile.GetComponent<ProjectileManager>().target = currentTarget;
+
+        //shot transform parent = this tranfrom parent
+       
         readyToFire = false;
         yield return new WaitForSeconds(self.attackCooldown);
         readyToFire = true;
+    }
+
+    GameObject CreateProjectile()
+    {
+
+        GameObject projectile = new GameObject(self.projectile.name);
+        projectile.transform.parent = this.transform;
+        projectile.transform.position = this.transform.position;
+        projectile.AddComponent<SpriteRenderer>();
+        projectile.AddComponent<BoxCollider2D>();
+        projectile.AddComponent<ProjectileManager>();
+
+        projectile.GetComponent<SpriteRenderer>().sortingOrder= 100;
+        projectile.GetComponent<BoxCollider2D>().isTrigger = true;
+
+        projectile.GetComponent<BoxCollider2D>().size = new Vector2(1,1);
+
+        projectile.GetComponent<ProjectileManager>().self = self.projectile;
+        projectile.GetComponent<ProjectileManager>().target = currentTarget;
+        return projectile;
     }
 
 }
